@@ -1,6 +1,12 @@
 from sortedlibrary import *
+import json
 
-def test_sort():
-    test_array = [5,4,3,2,1]
-    sorted_test_array = [1,2,3,4,5]
-    assert(sort(test_array) == sorted_test_array)
+def test_get_available_pets_success():
+    request = "https://petstore.swagger.io/v2/pet/findByStatus?status=available"
+    response = get_availabe_pets(request)
+    assert(isinstance(response, list))
+
+def test_get_available_pets_failure():
+    request = "Testing failure case"
+    response = get_availabe_pets(request)
+    assert("Error occurred during request!!" in response)
